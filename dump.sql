@@ -21,13 +21,13 @@ CREATE TABLE `items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 # Affichage de la table users
 # ------------------------------------------------------------
 
-ALTER TABLE `users`
-ADD PRIMARY KEY (`identifier`);
+#ALTER TABLE `users`
+#ADD PRIMARY KEY (`identifier`);
 
 
 # Affichage de la table user_inventory
@@ -36,11 +36,9 @@ ADD PRIMARY KEY (`identifier`);
 DROP TABLE IF EXISTS `user_inventory`;
 
 CREATE TABLE `user_inventory` (
-  `user_id` varchar(255) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
-  `item_id` int(11) unsigned NOT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`item_id`),
-  KEY `item_id` (`item_id`),
-  CONSTRAINT `user_inventory_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`identifier`),
-  CONSTRAINT `user_inventory_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) NOT NULL,
+  `item_id` int(11) DEFAULT NULL, 
+  `quantity` int(11) DEFAULT NULL
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
